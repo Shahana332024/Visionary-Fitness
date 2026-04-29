@@ -1,0 +1,154 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: rgb(16, 15, 15);
+}
+
+.banner {
+  /* Replace 'gym_image.jpg' with the actual image file name */
+  background-size: cover;
+  background-position: center;
+
+  text-align: center;
+  padding: 100px 0; /* Set height to cover the whole viewport */
+  margin: 0; /* Remove any default margin */
+}
+
+h2 {
+  font-family: "Protest Revolution", sans-serif;
+  font-size: 70px;
+  font-weight: 400;
+  font-style: normal;
+  color: white;
+}
+
+/* footer {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1px;
+  position: absolute;
+  bottom: 100;
+  width: 100%;
+  color: white;
+} */
+
+.play-regular {
+  font-family: "Play", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.play-bold {
+  font-family: "Play", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+.Title {
+  text-align: center;
+  font-family: "Protest Revolution", sans-serif;
+  font-size: 90px;
+  color: orangered;
+  padding: 20px 0 0px 0;
+}
+
+.big-packet {
+  padding: 20px;
+}
+.carousel {
+  border-radius: 10px;
+}
+.carousel-caption {
+  font-family: "Play", sans-serif;
+}
+.carousel-caption h3 {
+  color: white;
+  padding: 5px 0px;
+  background-color: orangered;
+  border-radius: 10px;
+}
+.carousel-caption p {
+  color: white;
+  font-size: larger;
+}
+.btn {
+  width: 250px;
+  height: 250px;
+  border-radius: 25%;
+  font-family: "Play", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  background-color: orangered;
+  box-shadow: 4px 5px 7px white;
+}
+.btn:hover {
+  background-color: white;
+  box-shadow: 4px 5px 7px orangered;
+}
+.space {
+  width:1000px;
+  place-items: center;
+  gap:50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  margin: 0 auto;
+  padding: 50px 0px;
+}
+
+.display_video {
+  display: none;
+  justify-content: center;
+  padding: 37px 0px;
+}
+.image-border {
+  border: 3px solid orangered;
+  padding:20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+}
+
+.stop-btn {
+  width: 35%;
+  padding: 8px;
+  border-radius: 10px;
+  color: white;
+  background-color: orangered;
+  font-size: large;
+  font-family: "Play", sans-serif;
+  box-shadow: 2px 3px 7px white;  
+  border: none;
+  margin-bottom: 10px;
+}
+
+.stop-btn:hover{
+  color: orangered;
+  background-color: white;
+  box-shadow: 2px 3px 7px orangered;
+}
+
+
+.loader {
+  border: 8px solid black;
+  border-top: 8px solid  orangered;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+  display: none; /* Hide loader by default */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media screen and (min-width: 600px) {
+  .packet {
+    max-width: 75%;
+    margin: 0px auto;
+  }
+}

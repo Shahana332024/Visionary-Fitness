@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visionary Fitness</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Handlee&family=Play:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Protest+Revolution&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../static/css/style.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js"></script>
+
+    ?
+    <!-- <script>
+      var socket = io();
+      socket.connect("http://" + document.domain + ":" + location.port);
+      socket.on("connect", function () {
+        socket.send("a");
+
+        socket.on("message", function (msg) {
+          console.log(msg)
+          socket.send("a");
+
+        });
+      });
+    </script> -->
+  </head>
+  <body>
+    <nav class="navbar1">
+      <div class="brand play-bold">
+        <h1 class="Title">Visionary Fitness</h1>
+      </div>
+    </nav>
+    <div class="big-packet">
+      <div class="packet">
+        <div id="carouselExampleDark" class="carousel carousel-dark slide">
+          <div class="carousel-indicators">
+            <button
+              type="button"
+              data-bs-target="#carouselExampleDark"
+              data-bs-slide-to="0"
+              class="active"
+              aria-current="true"
+              aria-label="Slide 1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleDark"
+              data-bs-slide-to="1"
+              aria-label="Slide 2"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleDark"
+              data-bs-slide-to="2"
+              aria-label="Slide 3"
+            ></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="1000">
+              <img
+                src="../uploads/WhatsApp Image 2024-03-31 at 7.54.33 PM (1).jpeg"
+                class="d-block w-100"
+                alt="..."
+              />
+              <div class="carousel-caption d-none d-md-block">
+                <h3>Push-ups Tracker</h3>
+                <p>
+                  An application designed to meticulously record and analyze
+                  pushup performance,aiding in fitness progress tracking and
+                  goal achievement
+                </p>
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="1000">
+              <img
+                src="./../uploads/dumbell.jpeg"
+                class="d-block w-100"
+                alt="..."
+              />
+              <div class="carousel-caption d-none d-md-block">
+                <h3>Dumbell Curl</h3>
+                <p>
+                  A comprehensive tool for monitoring and optimizing dumbbell
+                  exercises, ensuring efficient workouts and targeted muscle
+                  development.
+                </p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img
+                src="../uploads/abs crunches1.jpeg"
+                class="d-block w-100"
+                alt="..."
+              />
+              <div class="carousel-caption d-none d-md-block">
+                <h3>Abs Crunches</h3>
+                <p>
+                  A specialized solution for tracking and refining abdominal
+                  crunch exercises, fostering effective core strengthening and
+                  fitness progression.
+                </p>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleDark"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleDark"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="banner">
+      <h2>Train with accuracy and enhance your fitness</h2>
+      <p></p>
+      <div class="loader" id="loader"></div>
+      <div class="display_video">
+        <div class="image-border">
+          <h2 class="exercise_name">....</h2>
+          <img
+            id="exercise_feed"
+            src="..."
+            alt="Exercise Feed"
+            width="840"
+            height="620"
+          />
+          <button class="stop-btn " onclick="window.location.href='{{ url_for( 'stopFeed' ) }}';" id="stop-btn">Stop</button>
+        </div>
+        <!--  -->
+      </div>
+
+      <div type="radio" class="space">
+        <button
+          type="button"
+          class="btn btn-xl me-3"
+          onclick="startTracking('pushups')"
+        >
+          Track Push-Ups
+        </button>
+        <button
+          type="button"
+          class="btn btn-xl me-3"
+          onclick="startTracking('dumbbell')"
+        >
+          Track Dumbell-Curls
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-xl me-3"
+          onclick="startTracking('squats')"
+        >
+          Track Squats
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-xl me-3"
+          onclick="startTracking('pullups')"
+        >
+          Track Pull-ups
+        </button>
+
+        <button type="button" class="btn btn-xl me-3">
+          Track Abs Crunches
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-xl me-3"
+          onclick="startTracking('JJ')"
+        >
+          Track Jumping Jacks
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // function stopDisplay(){
+      //   var display_video = document.querySelector(".display_video");
+      //   var video_feed = document.getElementById("exercise_feed");
+        
+      //   video_feed.src = "..."
+      //   display_video.style.display = "none";
+      // }
+
+      function startTracking(exercise) {
+        var loader = document.getElementById("loader");
+        var display_video = document.querySelector(".display_video");
+        var video_feed = document.getElementById("exercise_feed");
+        var exercise_name = document.querySelector(".exercise_name");
+
+        // Show loader
+        loader.style.display = "block";
+
+        // Hide video feed initially
+        display_video.style.display = "none";
+
+        if (exercise === "pushups") {
+          video_feed.src = "{{ url_for('video_feed_pushups') }}";
+          exercise_name.textContent = "Push-ups tracker";
+        } else if (exercise === "dumbbell") {
+          video_feed.src = "{{ url_for('video_feed_dumbbell') }}";
+          exercise_name.textContent = "Dumbbell Curls tracker";
+        } else if (exercise === "squats") {
+          video_feed.src = "{{ url_for('video_feed_squats') }}";
+          exercise_name.textContent = "Squats tracker";
+        } else if (exercise === "pullups") {
+          video_feed.src = "{{ url_for('video_feed_pullups') }}";
+          exercise_name.textContent = "Pull-ups tracker";
+        }
+        else if ( exercise === "JJ") {
+          video_feed.src  = "{{ url_for('video_feed_jj')}}"
+          exercise_name.textContent = "Jumping Jacks tracker"
+        }
+
+        // Once video feed is loaded, hide the loader and display video feed
+        video_feed.onload = function () {
+          loader.style.display = "none";
+          display_video.style.display = "flex";
+        };
+      }
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- <footer>
+      <p>&copy; 2024 Electromavericks. All rights reserved.</p>
+    </footer> -->
+  </body>
+</html>
